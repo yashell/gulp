@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" type="text/css" href="css/css.css">
+    <link rel="stylesheet" href="iconfont/iconfont.css" />
+    <title>北京市医疗耗材追溯监管系统</title>
+    <script type="text/javascript" src="js/data.js"></script>
+</head>
+<body>
+<div class="mscreen">
+    <div class="bg_circular bg1"></div>
+    <div class="bg_circular bg2"></div>
+    <div class="bg_circular bg3"></div>
+    <div class="bg_circular bg4"></div>
+    <div class="bg_circular bg5"></div>
+    <div class="bg_circular bg6"></div>
+    <div class="bg_circular bg7"></div>
+    <div class="bg_circular bg8"></div>
+    <div class="bg_circular bg9"></div>
+    <div class="bg_circular bg10"></div>
+    <div class="bg_circular bg11"></div>
+    <div class="bg_circular bg12"></div>
+    <div class="bg_circular bg13"></div>
+    <div class="bg_circular bg14"></div>
+    <div class="bg_circular bg15"></div>
+    <div class="bg_circular bg16"></div>
+
+    <div class="mscreen_head">
+        蓝靛111要要有221111
+        <div class="mscreen_head_time"><span id="timeA"></span><label id="timeB"></label></div>
+    </div>
+    <div class="mscreen_body">
+        <div class="mscreen_body_left">
+            <div class="mscreen_body_left_top">
+
+                <div class="mscreen_body_left_topA"><div class="msbg"></div><span id="numA">0</span><label>医保产品</label> </div>
+                <div class="mscreen_body_left_topB"><div class="msbg"></div><span id="numB">0</span><label>非医保产品</label></div>
+                <div class="mscreen_body_left_topC"><span>本月医保交易额：</span><label id="numC">0</label></div>
+            </div>
+            <div class="mscreen_body_left_down">
+
+                    <div class="mscreen_main" onmouseover="msc_show(0)" onmouseout="msc_hide(0)">
+                        <div class="mscreen_up" onclick="changeText(false,0)"><img src="images/up.png"></div>
+                        <div class="mscreen_start"  id="msc_main0" onclick="animation(0)">
+                            <i class="yrt yrt-kuang" style=" position: absolute; font-size:10rem; margin-left: -6.9rem; color: #00ffff" ></i>
+                            <span>厂家</span>
+                        </div>
+                        <div class="mscreen_down" onclick="changeText(true,0)"><img src="images/down.png"></div>
+                        <div class="mscreen_total"><span id="pNumA">0</span>家</div>
+                    </div>
+                <div class="mscreen_line">
+                    <canvas id="CanvasA" height="400px">
+                        您的浏览器不支持canvas标签。
+                    </canvas>
+                    <!--                    <div class="line_one"><img src="images/arrow_left.png"/><img src="images/arrow_right.png"/></div>-->
+<!--                    <div class="line_A1"><img src="images/arrow_left.png"/><img src="images/arrow_right.png"/></div>-->
+                </div>
+                    <div class="mscreen_main" onmouseover="msc_show(1)" onmouseout="msc_hide(1)">
+                        <div class="mscreen_up" onclick="changeText(false,1)"><img src="images/up.png"></div>
+                        <div class="mscreen_start"  id="msc_main1" onclick="animation(1)">
+                            <i class="yrt yrt-kuang" style=" position: absolute; font-size:10rem; margin-left: -6.9rem; color: #00ffff" ></i>
+                            <span>经销商</span>
+                        </div>
+                        <div class="mscreen_down" onclick="changeText(true,1)"><img src="images/down.png"></div>
+                        <div class="mscreen_total"><span id="pNumB">0</span>家</div>
+                    </div>
+                <div class="mscreen_line">
+                    <canvas id="CanvasB" height="400px">
+                        您的浏览器不支持canvas标签。
+                    </canvas>
+                </div>
+                    <div class="mscreen_main" onmouseover="msc_show(2)" onmouseout="msc_hide(2)">
+                        <div class="mscreen_up" onclick="changeText(false,2)"><img src="images/up.png"></div>
+                        <div class="mscreen_start"  id="msc_main2" onclick="animation(2)">
+                            <i class="yrt yrt-kuang" style=" position: absolute; font-size:10rem; margin-left: -6.9rem; color: #00ffff" ></i>
+                             <span>医疗机构</span>
+                        </div>
+                        <div class="mscreen_down" onclick="changeText(true,2)"><img src="images/down.png"></div>
+                        <div class="mscreen_total"><span id="pNumC">0</span>家</div>
+                    </div>
+
+
+            </div>
+
+        </div>
+        <div class="mscreen_body_right">
+            <div class="mscreen_body_right_up" title="产品分类">
+                <div class="mscreen_body_right_upclass">
+                    <div class="mscreen_body_right_upone">
+                        <div class="circleA basecircle">
+                            <span class="circlespanB" id="numD">0</span>
+                            <span class="circlespanA">心脏耗材</span>
+                        </div>
+                        <div class="circle_out circle1"><img src="images/circle.png"></div>
+                    </div>
+                    <div class="mscreen_body_right_upone">
+                        <div class="circleB basecircle">
+                            <span class="circlespanC" id="numE">0</span>
+                            <span class="circlespanD">骨科耗材</span>
+                        </div>
+                        <div class="circle_out circle2"><img src="images/circle2.png"></div>
+                    </div>
+                </div>
+                <div class="mscreen_body_right_upclass">
+                    <div class="mscreen_body_right_upone">
+                        <div class="circleB basecircle">
+                            <span class="circlespanC" id="numF">0</span>
+                            <span class="circlespanD">普通耗材</span>
+                        </div>
+                        <div class="circle_out circle2"><img src="images/circle2.png"></div>
+                    </div>
+                    <div class="mscreen_body_right_upone">
+                        <div class="circleA basecircle">
+                            <span class="circlespanB" id="numG">0</span>
+                            <span class="circlespanA">体验试剂</span>
+                        </div>
+                        <div class="circle_out circle1"><img src="images/circle.png"></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="mscreen_body_right_down" title="企业信息">
+                <div class="mscreen_body_right_upclass"  style="justify-content: space-around">
+                    <div class="mscreen_body_right_downone">
+                        <i class="yrt yrt-xiaoxiaokuang" style=" position: absolute; font-size: 9rem; color: #00ffff" ></i>
+                        <span class="circlespanE">登记企32业</span>
+                        <span class="circlespanF" id="numH">0</span>
+                    </div>
+                    <div class="mscreen_body_right_downone">
+                        <i class="yrt yrt-xiaoxiaokuang" style=" position: absolute; font-size: 9rem; color: #00ffff" ></i>
+                        <span class="circlespanE">登记销售人员</span>
+                        <span class="circlespanF" id="numI">0</span>
+                    </div>
+                </div>
+                <div class="mscreen_body_right_upclass"  style="justify-content: space-around">
+                    <div class="mscreen_body_right_downone">
+                        <i class="yrt yrt-xiaoxiaokuang" style=" position: absolute; font-size: 9rem; color: #f46839" ></i>
+                        <span class="circlespanG">企业到期</span>
+                        <span class="circlespanH" id="numJ">0</span>
+                    </div>
+                    <div class="mscreen_body_right_downone" >
+                        <i class="yrt yrt-xiaoxiaokuang" style=" position: absolute; font-size: 9rem; color: #f46839" ></i>
+                        <span class="circlespanG">产品到期</span>
+                        <span class="circlespanH" id="numK">0</span>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/config.js"></script>
+</body>
+</html>

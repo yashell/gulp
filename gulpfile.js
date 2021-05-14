@@ -1,12 +1,9 @@
-const { src, dest } = require('gulp');
 const gulp = require('gulp')
 const uglify = require("gulp-uglify");
 const concat = require('gulp-concat');
 const del = require('del');  //删除文件
 const browserSync = require('browser-sync').create();// 静态服务器
-
-
-const id = require('./package.json').name || 'miniprogram-custom-component'
+// const id = require('./package.json').name || 'miniprogram-custom-component'
 const config = require('./tools/config')
 
 const clearAllFn = async () => {
@@ -26,10 +23,9 @@ const scriptFn = async (done) => {
     await gulp.src(['./src/a.js', './src/c.js'])  // 指定两个js
         // src('./src/*.js')
         .pipe(concat('main.min.js')) /*合并成一个新文件*/
-        .pipe(dest(config.distPath + '/js'));
+        .pipe(gulp.dest(config.distPath + '/js'));
     done()
 }
-
 
 /// 混淆js
 const uglifyFn = async (done) => {
@@ -40,14 +36,13 @@ const uglifyFn = async (done) => {
                 compress: true,//类型：Boolean 默认：true 是否完全压缩
                 //preserveComments: all //保留所有注释
                 output: {
-                    preamble: "/** \r\n 版权所有 \r\n 填写日期: " + config.getCurrentDate + " \r\n 填写作者信息: Anunachi  \r*/"
+                    preamble: "/** \r\n 版权所有 \r\n 填写日期: " + config.format(new Date(), 'yyyy-MM-dd HH:mm:ss') + " \r\n 填写作者信息: Anunachi  \r*/"
                 }
             }
         ))
         .pipe(gulp.dest(config.distPath));
     done()
 }
-
 
 /// 完成
 const finshFn = async () => {
@@ -56,25 +51,7 @@ const finshFn = async () => {
     // console.log('process.argv', process.argv)
 }
 
-function format(time, reg) {
-    const date = typeof time === 'string' ? new Date(time) : time
-    const map = {}
-    map.yyyy = date.getFullYear()
-    map.yy = ('' + map.yyyy).substr(2)
-    map.M = date.getMonth() + 1
-    map.MM = (map.M < 10 ? '0' : '') + map.M
-    map.d = date.getDate()
-    map.dd = (map.d < 10 ? '0' : '') + map.d
-    map.H = date.getHours()
-    map.HH = (map.H < 10 ? '0' : '') + map.H
-    map.m = date.getMinutes()
-    map.mm = (map.m < 10 ? '0' : '') + map.m
-    map.s = date.getSeconds()
-    map.ss = (map.s < 10 ? '0' : '') + map.s
-
-    return reg.replace(/\byyyy|yy|MM|M|dd|d|HH|H|mm|m|ss|s\b/g, $1 => map[$1])
-}
-
+let taskSeries = gulp.series(clearAllFn, copyFn, scriptFn, uglifyFn, finshFn);
 
 /// 初始化服务器
 const server = async () => {
@@ -89,31 +66,21 @@ const server = async () => {
     })
 }
 
-let taskSeries = gulp.series(clearAllFn, copyFn, scriptFn, uglifyFn, finshFn);
-
-
-
+/// 监听
 const watch = () => {
-
-
-    console.log('ip', config.host);
-    console.time
-
+    console.log('time', config.format(new Date(), 'yyyy-MM-dd HH:mm:ss'))
     //watch 地址可以有多个，完了可以跟task
     const watcher = gulp.watch('src/**/*');
     watcher.on('change', event => {
         console.log('DONE  Compiled successfully')
         console.log("\nApp running at:")
-        console.log(`\x1B[36m%s\x1B[0m`,` - Local:   http://localhost:${config.port}`)
-        console.log(`\x1B[36m%s\x1B[0m`,` - Network:   http://${config.host}:${config.port}`)
+        console.log(`\x1B[36m%s\x1B[0m`, ` - Local:   http://localhost:${config.port}`)
+        console.log(`\x1B[36m%s\x1B[0m`, ` - Network:   http://${config.host}:${config.port}`)
         browserSync.reload()
     });
 }
 
-
-
 const dev = gulp.parallel(server, watch);
-
 
 module.exports = {
     default: dev,
